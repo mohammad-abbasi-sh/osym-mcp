@@ -1,0 +1,23 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "osym-mcp"
+version = "0.1.0"
+description = "Unofficial read-only MCP server for ÖSYM (Türkiye's national exam authority) — announcements, exam calendar, per-group news"
+readme = "README.md"
+license = { text = "PolyForm-Noncommercial-1.0.0" }
+requires-python = ">=3.10"
+dependencies = [
+    "mcp<2",
+    "curl-cffi>=0.7,<1.0",
+    "requests>=2.32",
+]
+authors = [{ name = "Mohammad Abbasi" }]
+
+[project.scripts]
+osym-mcp = "osym_mcp.server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/osym_mcp"]
